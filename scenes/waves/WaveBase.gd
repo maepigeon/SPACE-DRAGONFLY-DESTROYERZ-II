@@ -14,11 +14,11 @@ func end_wave():
 	pause_wave()
 	destroy_wave()
 	print("must implement end_wave function")
-	
+
 # Called when the wave is destroyed
 func destroy_wave():
 	print("need to implement a wave destructor")
-	
+
 # Pause the wave spawning.
 func pause_wave():
 	print("need to implement a pause_wave function")
