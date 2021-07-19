@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://space_actors/enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://space_actors/enemies/fly/Fly.gd" type="Script" id=2]
+[ext_resource path="res://space_actors/enemies/fly/fly_art/fly.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 38.2013
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "pop",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "bug_out_2",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "bug_out_1",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 37.7612
+
+[node name="Fly" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Collider" parent="CollisionArea" index="0"]
+position = Vector2( 1.57492, 17.3239 )
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" parent="." index="1"]
+position = Vector2( 0.314972, 0 )
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="." index="6"]
+position = Vector2( 0.314987, 17.0089 )
+shape = SubResource( 3 )

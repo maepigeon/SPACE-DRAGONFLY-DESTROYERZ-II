@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://backgrounds/effects/Clouds.tscn" type="PackedScene" id=2]
+[ext_resource path="res://shaders/space_backgrounds/star/star.png" type="Texture" id=3]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 960, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1000.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.1
+scale_random = 0.2
+color = Color( 0.223529, 0.145098, 0.223529, 1 )
+hue_variation = 0.06
+hue_variation_random = 0.5
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_img;
+uniform float speed = 0.2;
+uniform float aspect_ratio = 0.5625;
+uniform vec3 cloud_color = vec3(0.6, 0.7, 1.0);
+
+void fragment() {
+	vec2 uv = vec2(UV.x, UV.y * aspect_ratio - TIME * speed);
+	float noise_r = cloud_color.r * texture(noise_img, uv).r;
+	float noise_g = cloud_color.g * texture(noise_img, uv).g;
+	float noise_b = cloud_color.b * texture(noise_img, uv).b;
+	
+	vec3 color = vec3(noise_r, noise_g, noise_b);
+	float new_alpha = noise_r * noise_g * noise_b;
+	
+	COLOR.rgb = color;
+	COLOR.a = (COLOR.r + COLOR.g + COLOR.b)/3.0;
+	COLOR.a = COLOR.a * COLOR.a;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=3]
+
+[sub_resource type="NoiseTexture" id=4]
+resource_local_to_scene = true
+seamless = true
+bump_strength = 2000.0
+noise = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/speed = 0.424
+shader_param/aspect_ratio = 0.5625
+shader_param/cloud_color = Vector3( 0.9, 0, 0.9 )
+shader_param/noise_img = SubResource( 4 )
+
+[sub_resource type="NoiseTexture" id=6]
+resource_local_to_scene = true
+seamless = true
+bump_strength = 2000.0
+noise = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/speed = 0.754
+shader_param/aspect_ratio = 0.5625
+shader_param/cloud_color = Vector3( 0.9, 0.6, 0.6 )
+shader_param/noise_img = SubResource( 6 )
+
+[sub_resource type="NoiseTexture" id=8]
+resource_local_to_scene = true
+seamless = true
+bump_strength = 2000.0
+noise = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/speed = 0.312
+shader_param/aspect_ratio = 0.5625
+shader_param/cloud_color = Vector3( 0.6, 0.7, 1 )
+shader_param/noise_img = SubResource( 8 )
+
+[node name="SpaceBackground" type="CanvasLayer"]
+layer = -1
+
+[node name="BackgroundLayers" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkyColor" type="ColorRect" parent="BackgroundLayers"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.0509804, 0.0313726, 0.137255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stars" type="Particles2D" parent="BackgroundLayers"]
+modulate = Color( 2, 2, 2, 1 )
+position = Vector2( 960, 0 )
+amount = 40
+lifetime = 2.4
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Clouds3" parent="BackgroundLayers" instance=ExtResource( 2 )]
+material = SubResource( 5 )
+
+[node name="Clouds2" parent="BackgroundLayers" instance=ExtResource( 2 )]
+material = SubResource( 7 )
+
+[node name="Clouds" parent="BackgroundLayers" instance=ExtResource( 2 )]
+material = SubResource( 9 )

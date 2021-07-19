@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://space_actors/Actor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://space_actors/player/player_art/default_animation/moth.png" type="Texture" id=2]
+[ext_resource path="res://space_actors/player/Player.gd" type="Script" id=3]
+[ext_resource path="res://space_actors/player/laser_gun/LaserGun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://space_actors/player/player_art/default_animation/moth1hp.png" type="Texture" id=5]
+[ext_resource path="res://space_actors/player/player_art/default_animation/moth2hp.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.60341, 26.1491 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "1hp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "2hp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "3hp",
+"speed": 5.0
+} ]
+
+[node name="Player" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Collider" parent="CollisionArea" index="0" groups=[
+"Player",
+]]
+position = Vector2( 0, -8 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" parent="." index="1"]
+modulate = Color( 1.12, 1.12, 1.12, 1 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+animation = "3hp"
+
+[node name="Gun" parent="." index="5" instance=ExtResource( 4 )]
+position = Vector2( 0, -65 )
+rotation = -1.5708
+[connection signal="Damaged" from="HPSystem" to="." method="_on_HPSystem_Damaged"]
