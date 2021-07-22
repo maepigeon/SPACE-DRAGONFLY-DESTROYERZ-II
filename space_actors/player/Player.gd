@@ -10,8 +10,8 @@ export var player_number = 1
 # Speed contants
 var keyboard_speed : float = 1400.0
 var mouse_speed : float = 30000.0
-var acceleration : float = 6000.0
-var decelleration_speed = 10000.0
+var acceleration : float = 9000.0
+var decelleration_speed = 15000.0
 
 # Control inputs
 var directional_input : Vector2

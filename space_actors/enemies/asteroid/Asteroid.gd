@@ -1,6 +1,6 @@
 extends "res://space_actors/enemies/Enemy.gd"
-
 class_name Asteroid
+# An asteroid object that comes down from the sky.
 
 export var speed : float = 128.0
 export var direction := Vector2.DOWN 
@@ -74,7 +74,7 @@ func randomize_trajectory(asteroid : Node) -> void:
 # When the Actor dies, do this.
 func _on_HPSystem_Dead() -> void:
 	explode()
-	CameraEffects.add_trauma(0.07)
+	CameraEffects.add_trauma(0.08)
 	destroy()
 
 # Whenever the Actor's HP is updated

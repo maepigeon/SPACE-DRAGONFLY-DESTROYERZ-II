@@ -12,6 +12,11 @@ extents = Vector2( 7.60341, 26.1491 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "3hp",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "1hp",
@@ -20,11 +25,6 @@ animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "2hp",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "3hp",
 "speed": 5.0
 } ]
 

@@ -35,56 +35,55 @@ void fragment() {
 	float noise_b = cloud_color.b * texture(noise_img, uv).b;
 	
 	vec3 color = vec3(noise_r, noise_g, noise_b);
-	float new_alpha = noise_r * noise_g * noise_b;
 	
 	COLOR.rgb = color;
 	COLOR.a = (COLOR.r + COLOR.g + COLOR.b)/3.0;
 	COLOR.a = COLOR.a * COLOR.a;
 }"
 
-[sub_resource type="OpenSimplexNoise" id=3]
+[sub_resource type="OpenSimplexNoise" id=6]
 
-[sub_resource type="NoiseTexture" id=4]
+[sub_resource type="NoiseTexture" id=7]
 resource_local_to_scene = true
 seamless = true
 bump_strength = 2000.0
-noise = SubResource( 3 )
+noise = SubResource( 6 )
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = SubResource( 2 )
 shader_param/speed = 0.424
 shader_param/aspect_ratio = 0.5625
 shader_param/cloud_color = Vector3( 0.9, 0, 0.9 )
-shader_param/noise_img = SubResource( 4 )
-
-[sub_resource type="NoiseTexture" id=6]
-resource_local_to_scene = true
-seamless = true
-bump_strength = 2000.0
-noise = SubResource( 3 )
-
-[sub_resource type="ShaderMaterial" id=7]
-resource_local_to_scene = true
-shader = SubResource( 2 )
-shader_param/speed = 0.754
-shader_param/aspect_ratio = 0.5625
-shader_param/cloud_color = Vector3( 0.9, 0.6, 0.6 )
-shader_param/noise_img = SubResource( 6 )
+shader_param/noise_img = SubResource( 7 )
 
 [sub_resource type="NoiseTexture" id=8]
 resource_local_to_scene = true
 seamless = true
 bump_strength = 2000.0
-noise = SubResource( 3 )
+noise = SubResource( 6 )
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/speed = 0.754
+shader_param/aspect_ratio = 0.5625
+shader_param/cloud_color = Vector3( 0.9, 0.6, 0.6 )
+shader_param/noise_img = SubResource( 8 )
+
+[sub_resource type="NoiseTexture" id=9]
+resource_local_to_scene = true
+seamless = true
+bump_strength = 2000.0
+noise = SubResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 shader = SubResource( 2 )
 shader_param/speed = 0.312
 shader_param/aspect_ratio = 0.5625
 shader_param/cloud_color = Vector3( 0.6, 0.7, 1 )
-shader_param/noise_img = SubResource( 8 )
+shader_param/noise_img = SubResource( 9 )
 
 [node name="SpaceBackground" type="CanvasLayer"]
 layer = -1
@@ -115,10 +114,10 @@ process_material = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="Clouds3" parent="BackgroundLayers" instance=ExtResource( 2 )]
-material = SubResource( 5 )
+material = SubResource( 3 )
 
 [node name="Clouds2" parent="BackgroundLayers" instance=ExtResource( 2 )]
-material = SubResource( 7 )
+material = SubResource( 4 )
 
 [node name="Clouds" parent="BackgroundLayers" instance=ExtResource( 2 )]
-material = SubResource( 9 )
+material = SubResource( 5 )
