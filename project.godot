@@ -24,10 +24,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://spawn_patterns/asteroid_field/AsteroidField.gd"
 }, {
-"base": "Node2D",
+"base": "Actor",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://space_actors/enemies/Enemy.gd"
+}, {
+"base": "Node",
+"class": "EnemyFactory",
+"language": "GDScript",
+"path": "res://spawn_patterns/EnemyFactory.gd"
 }, {
 "base": "Enemy",
 "class": "Fly",
@@ -39,15 +44,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://spawn_patterns/fly_field/FlyField.gd"
 }, {
+"base": "SpawnPattern",
+"class": "FlySpawner",
+"language": "GDScript",
+"path": "res://spawn_patterns/fly_field/FlySpawner.gd"
+}, {
 "base": "Camera2D",
 "class": "GameCamera",
 "language": "GDScript",
 "path": "res://scenes/camera/GameCamera.gd"
 }, {
 "base": "Particles2D",
-"class": "ParticlesAsteroidExplosion",
+"class": "ParticlesExplosion",
 "language": "GDScript",
-"path": "res://space_actors/enemies/asteroid/ParticlesAsteroidExplosion.gd"
+"path": "res://space_actors/ParticlesExplosion.gd"
+}, {
+"base": "Node",
+"class": "PathGenerator",
+"language": "GDScript",
+"path": "res://space_actors/enemies/worm/PathGenerator.gd"
 }, {
 "base": "Node2D",
 "class": "Player",
@@ -73,26 +88,60 @@ _global_script_classes=[ {
 "class": "WavePrototype2",
 "language": "GDScript",
 "path": "res://scenes/waves/space_prototypes/Wave-2.gd"
+}, {
+"base": "Wave",
+"class": "WavePrototype3",
+"language": "GDScript",
+"path": "res://scenes/waves/space_prototypes/Wave-3.gd"
+}, {
+"base": "Enemy",
+"class": "Worm",
+"language": "GDScript",
+"path": "res://space_actors/enemies/worm/Worm.gd"
+}, {
+"base": "Enemy",
+"class": "WormSegment",
+"language": "GDScript",
+"path": "res://space_actors/enemies/worm/WormSegment.gd"
+}, {
+"base": "Node2D",
+"class": "Wormhole",
+"language": "GDScript",
+"path": "res://space_actors/enemies/worm/wormhole/Wormhole.gd"
+}, {
+"base": "SpawnPattern",
+"class": "WormholePair",
+"language": "GDScript",
+"path": "res://spawn_patterns/worm_hole_pair/WormholePair.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
 "Asteroid": "",
 "AsteroidField": "",
 "Enemy": "",
+"EnemyFactory": "",
 "Fly": "",
 "FlyField": "",
+"FlySpawner": "",
 "GameCamera": "",
-"ParticlesAsteroidExplosion": "",
+"ParticlesExplosion": "",
+"PathGenerator": "",
 "Player": "",
 "SpawnPattern": "",
 "Wave": "",
 "WavePrototype1": "",
-"WavePrototype2": ""
+"WavePrototype2": "",
+"WavePrototype3": "",
+"Worm": "",
+"WormSegment": "",
+"Wormhole": "",
+"WormholePair": ""
 }
 
 [application]
 
-config/name="SPACE DRAGONFLY DESTROYERZ II"
+config/name="SPACE DRAGONFLY DESTROYERS"
+run/main_scene="res://scenes/Arena.tscn"
 boot_splash/image="res://space_actors/player/player_art/default_animation/moth.png"
 boot_splash/fullsize=false
 config/icon="res://space_actors/player/player_art/default_animation/moth.png"
@@ -112,8 +161,6 @@ gdscript/warnings/return_value_discarded=false
 window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
-window/size/borderless=true
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="WormSegmentPathFollow2D" type="PathFollow2D"]
+position = Vector2( 54.9492, 24.8002 )
+rotation = 1.79553
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../../../Segments/WormSegment")
+update_rotation = false
+update_scale = false

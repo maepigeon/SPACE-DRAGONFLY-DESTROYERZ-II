@@ -1,5 +1,5 @@
 extends Particles2D
-class_name ParticlesAsteroidExplosion
+class_name ParticlesExplosion
 
 export var time_alive : float = 5.0; # 5 Seconds
 var timer : float = 0
@@ -12,7 +12,7 @@ func _ready():
 	get_node("ExplosionSound"+str(animation_number)).play()
 
 # Runs every frame.
-func _process(delta):
+func _process(delta : float):
 	timer += delta
 	if timer > time_alive:
 		free()

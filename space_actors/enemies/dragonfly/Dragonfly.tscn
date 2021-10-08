@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://space_actors/enemies/dragonfly/dragonfly.png" type="Texture" id=1]
+[ext_resource path="res://space_actors/enemies/dragonfly/flames/flamethrower/FlameThrower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://space_actors/enemies/Enemy.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Dragonfly" instance=ExtResource( 3 )]
+
+[node name="AnimatedSprite" parent="." index="1"]
+frames = SubResource( 1 )
+
+[node name="FlameThrower" parent="." index="7" instance=ExtResource( 2 )]
+position = Vector2( 0, 250 )
+scale = Vector2( 0.5, 0.5 )

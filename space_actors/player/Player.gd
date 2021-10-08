@@ -32,12 +32,15 @@ onready var current_max_speed : float = speed_dictionary[player_mode]
 export var player_mode : String = "keyboard"
 
 func _ready():
-	InputManager.player1 = self
+	if player_number == 1:
+		InputManager.player1 = self
+	elif player_number == 2:
+		InputManager.player2 = self
 	# Player loses control when they die, disable the cursor.
 	$HPSystem.connect("Dead", InputManager, "_on_player_died")
 
 
-func _process(delta) -> void:
+func _process(delta : float) -> void:
 	match player_mode:
 		"keyboard", "controller":
 			accelerate(delta)
@@ -53,7 +56,7 @@ func _process(delta) -> void:
 
 	
 # Update velocity for frame
-func accelerate(_delta) -> void:	
+func accelerate(_delta : float) -> void:	
 	# Handle accelleration
 	# Accelerate faster if changing direction
 	# Otherwise accelerate normally

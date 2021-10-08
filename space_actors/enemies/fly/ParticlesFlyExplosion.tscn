@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://space_actors/ParticlesExplosion.gd" type="Script" id=1]
+[ext_resource path="res://audio/sound_effects/space_sounds/explosions/explosion.wav" type="AudioStream" id=2]
+[ext_resource path="res://space_actors/player/glowing_circle.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.159176, 0.970215, 0.963087, 1, 0, 0.256135, 0.989746, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 10.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 80.0
+initial_velocity_random = 0.2
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 100.0
+linear_accel_random = 1.0
+scale_random = 0.38
+color_ramp = SubResource( 2 )
+hue_variation = 0.05
+hue_variation_random = 0.2
+
+[node name="ParticlesFlyExplosion" type="Particles2D"]
+scale = Vector2( 2, 2 )
+emitting = false
+amount = 30
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.7
+process_material = SubResource( 3 )
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
+time_alive = 5.0
+
+[node name="ExplosionSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+pitch_scale = 0.7
+
+[node name="ExplosionSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+pitch_scale = 0.9
+
+[node name="ExplosionSound3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )

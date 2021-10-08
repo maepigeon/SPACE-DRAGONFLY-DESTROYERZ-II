@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://space_actors/enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://space_actors/enemies/worm/Worm.gd" type="Script" id=2]
+[ext_resource path="res://space_actors/enemies/worm/PathGenerator.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 170, 130, 0, 0, 0, 0, 174.545, 144.848, -26.6294, -93.897, 26.6294, 93.897, 513.183, 530.229, -15.6959, -61.8018, 15.6959, 61.8018, 384.748, 865.586, -82.5352, -12.9589, 82.5352, 12.9589, 579.778, 1103.43, -30.9194, 99.8929, 30.9194, -99.8929, 929.405, 958.344, -1.81198e-05, 85.623, 1.81198e-05, -85.623, 781.943, 696.718, -130.812, -16.6489, 130.812, 16.6489, 1095.89, 468.391, -183.138, 107.029, 183.138, -107.029, 1367.03, 642.015, -295.858, 43.7714, 295.858, -43.7714, 1736.83, 258.492, 0, 0, 0, 0, 1752.34, 461.255 )
+}
+
+[node name="Worm" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="PathGenerator" parent="." index="0" instance=ExtResource( 3 )]
+
+[node name="Path2D" type="Path2D" parent="." index="8"]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+position = Vector2( 177.854, 147.955 )
+rotation = 0.757057
+offset = 20.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D" index="0"]
+remote_path = NodePath("../../../Segments/Sprite")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D" index="1"]
+position = Vector2( 192.385, 161.725 )
+rotation = 0.761724
+offset = 40.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D2" index="0"]
+remote_path = NodePath("../../../Segments/Sprite2")
+
+[node name="Segments" type="Node2D" parent="." index="9"]
+
+[node name="Sprite" type="Sprite" parent="Segments" index="0"]
+position = Vector2( 177.854, 147.955 )
+rotation = 0.757057

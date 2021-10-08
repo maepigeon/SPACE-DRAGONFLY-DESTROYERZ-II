@@ -4,7 +4,7 @@ class_name FlyField
 
 var field_size : Vector2 = Vector2(12, 3)
 var grid_pixels : Vector2 = Vector2(1920, 1080)
-var velocity : Vector2 = Vector2.DOWN
+var velocity : Vector2 = Vector2.DOWN * 1000
 var use_random_shift : bool = false
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -40,8 +40,9 @@ func spawn_fly(index : Vector2) -> void:
 	fly.position = Vector2(index.x*grid_pixels.x/field_size.x,\
 		index.y*grid_pixels.y/field_size.y)
 	fly.speed = velocity.length()
-	fly.direction = velocity.normalized()
 	fly.velocity = velocity
+	fly.zigzag_amount = 300
+	fly.zigzag_duration = 1
 	fly.rotation = velocity.angle()-PI/2
 		
 	# Starts the flies out not moving together side-to-side

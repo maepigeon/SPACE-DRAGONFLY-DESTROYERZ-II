@@ -14,10 +14,15 @@ signal Dead
 signal HPUpdated
 signal Damaged
 
-#If HP doesn't regenerate, disable process() (where it heals).
+# If HP doesn't regenerate, disable process() (where it heals).
 func _ready():
 	set_process(hp_regen_rate > 0.0)
-
+	
+# Sets the HP and max HP
+func initialize_hp_and_max_hp(value : float) -> void:
+	current_hp = value
+	max_hp = value
+	
 # Updates the HP System's internal knowledge of if it is dead, and returns the 
 # result.
 func check_if_alive() -> bool:

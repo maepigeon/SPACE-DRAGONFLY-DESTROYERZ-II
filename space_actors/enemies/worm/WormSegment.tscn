@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://space_actors/enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://space_actors/enemies/worm/WormSegment.gd" type="Script" id=2]
+[ext_resource path="res://space_actors/enemies/worm/worm_spriteframes.tres" type="SpriteFrames" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 50.17
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 49.8456
+
+[node name="WormSegment" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Collider" parent="CollisionArea" index="0"]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" parent="." index="1"]
+scale = Vector2( 0.25, 0.25 )
+frames = ExtResource( 3 )
+animation = "Head"
+
+[node name="HPSystem" parent="." index="3"]
+max_hp = 1.0
+hp_regen_rate = 0.2
+
+[node name="CollisionShape2D" parent="." index="6"]
+shape = SubResource( 2 )

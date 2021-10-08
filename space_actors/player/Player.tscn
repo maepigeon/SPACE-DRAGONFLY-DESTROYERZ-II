@@ -38,7 +38,6 @@ position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
-modulate = Color( 1.12, 1.12, 1.12, 1 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "3hp"

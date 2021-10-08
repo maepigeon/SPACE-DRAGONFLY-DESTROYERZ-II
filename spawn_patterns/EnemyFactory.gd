@@ -1,15 +1,17 @@
 extends Node
+class_name EnemyFactory
 
 var created_enemies : Array
 
 # List of all enemies and their corresponding filepath.
 var enemies : Dictionary = {
 	"Asteroid": "res://space_actors/enemies/asteroid/Asteroid.tscn",
-	"Fly": "res://space_actors/enemies/fly/Fly.tscn"
+	"Fly": "res://space_actors/enemies/fly/Fly.tscn",
+	"Worm": "res://space_actors/enemies/worm/Worm.tscn"
 	}
 
 # Removes specified enemy from list of created enemies.
-func remove_enemy_from_stack(enemy : Object):
+func remove_enemy_from_stack(enemy : Object) -> void:
 	created_enemies.erase(enemy)
 	
 

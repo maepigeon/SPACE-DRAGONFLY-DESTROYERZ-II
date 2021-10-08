@@ -1,8 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://space_actors/player/glowing_circle.png" type="Texture" id=1]
-[ext_resource path="res://space_actors/enemies/asteroid/ParticlesAsteroidExplosion.gd" type="Script" id=2]
+[ext_resource path="res://space_actors/ParticlesExplosion.gd" type="Script" id=2]
 [ext_resource path="res://audio/sound_effects/space_sounds/explosions/explosion.wav" type="AudioStream" id=3]
+
+
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 0.955692, 0.605469, 1, 1, 0.171875, 0.504257, 0 )

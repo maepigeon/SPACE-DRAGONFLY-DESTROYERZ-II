@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Arena.gd" type="Script" id=1]
 [ext_resource path="res://scenes/waves/WaveBase.tscn" type="PackedScene" id=2]
@@ -7,10 +7,10 @@
 [ext_resource path="res://scenes/effects/GlowWorldEffect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://backgrounds/SpaceBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/waves/space_prototypes/Wave-2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/waves/space_prototypes/Wave-3.tscn" type="PackedScene" id=8]
 
 [node name="Arena" type="Node"]
 script = ExtResource( 1 )
-wave = -2
 
 [node name="Background" type="Node" parent="."]
 
@@ -29,6 +29,8 @@ current = true
 [node name="Wave-1" parent="Waves" instance=ExtResource( 3 )]
 
 [node name="Wave-2" parent="Waves" instance=ExtResource( 7 )]
+
+[node name="Wave-3" parent="Waves" instance=ExtResource( 8 )]
 
 [node name="Enemies" type="Node" parent="."]
 
