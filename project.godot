@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/camera/GameCamera.gd"
 }, {
+"base": "Node",
+"class": "HPSystem",
+"language": "GDScript",
+"path": "res://space_actors/HPSystem.gd"
+}, {
 "base": "Particles2D",
 "class": "ParticlesExplosion",
 "language": "GDScript",
@@ -124,6 +129,7 @@ _global_script_class_icons={
 "FlyField": "",
 "FlySpawner": "",
 "GameCamera": "",
+"HPSystem": "",
 "ParticlesExplosion": "",
 "PathGenerator": "",
 "Player": "",
@@ -153,6 +159,7 @@ InputManager="*res://ui/input/InputManager.tscn"
 
 [debug]
 
+gdscript/completion/autocomplete_setters_and_getters=true
 gdscript/warnings/unused_argument=false
 gdscript/warnings/return_value_discarded=false
 
@@ -161,7 +168,6 @@ gdscript/warnings/return_value_discarded=false
 window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
-window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [input]
@@ -202,6 +208,8 @@ x={
 
 [rendering]
 
+quality/driver/fallback_to_gles2=true
 quality/2d/use_pixel_snap=true
 environment/default_clear_color=Color( 0.243137, 0.192157, 0.317647, 1 )
+quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"

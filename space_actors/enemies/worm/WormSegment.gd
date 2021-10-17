@@ -83,7 +83,6 @@ func _on_HPSystem_HPUpdated(new_hp : float) -> void:
 
 
 # Do nothing when it exsts the viewport. This is expected behavior for worms.
-# Do nothing when it exsts the viewport. This is expected behavior for worms.
 func _on_VisibilityNotifier2D_viewport_exited(_viewport):
 	pass
 	
@@ -101,7 +100,7 @@ func emit_explosion_particles() -> void:
 	
 # When the Actor dies, do this.
 func _on_HPSystem_Dead() -> void:
-	emit_signal("destroy_segment", index)
+	emit_signal("destroy_segment", self)
 	explode()
 	CameraEffects.add_trauma(0.08)
 	destroy()

@@ -11,6 +11,7 @@
 
 [node name="Arena" type="Node"]
 script = ExtResource( 1 )
+wave = -3
 
 [node name="Background" type="Node" parent="."]
 

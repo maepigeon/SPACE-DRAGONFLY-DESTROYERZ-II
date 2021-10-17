@@ -1,4 +1,6 @@
 extends Node
+class_name HPSystem
+
 # This is the hitpoint system used by all Actors.
 
 # Actors cannot exceed their max_hp. They begin with max_hp.
